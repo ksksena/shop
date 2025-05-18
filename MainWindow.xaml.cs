@@ -23,6 +23,10 @@ namespace shop
         public MainWindow()
         {
             InitializeComponent();
+            ApplicationData.AppConnect.Model1 = new ApplicationData.shopEntities1();
+            ApplicationData.AppFrame.frmMain2 = frameMain;
+            frameMain.Navigate(new Pages.Authorization());
+
         }
     }
 }

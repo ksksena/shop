@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="061da273caa948cf8cc5729a54efd297" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="shopModel.Enterprises" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="shopModel.OrderDetails" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="shopModel.Orders" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="shopModel.Products" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="shopModel.Roles" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="shopModel.Suppliers" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="shopModel.sysdiagrams" Width="1.5" PointX="7.5" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="shopModel.Users" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="shopModel.FK_Suppliers_Enterprises" ManuallyRouted="false" />
+        <AssociationConnector Association="shopModel.FK_OrderDetails_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="shopModel.FK_OrderDetails_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="shopModel.FK_Orders_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="shopModel.FK_Products_Suppliers" ManuallyRouted="false" />
+        <AssociationConnector Association="shopModel.FK_Users_Roles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="shopModel.Favorites" Width="1.5" PointX="7.875" PointY="4.25" />
+        <AssociationConnector Association="shopModel.FK_Favorites_Products" />
+        <AssociationConnector Association="shopModel.FK_Favorites_Users" ManuallyRouted="true" >
+          <ConnectorPoint PointX="4.5" PointY="4.1340950520833326" />
+          <ConnectorPoint PointX="4.875" PointY="52.076498289380027" />
+          <ConnectorPoint PointX="4.875" PointY="8.66757259145379" />
+          <ConnectorPoint PointX="9.37645448136051" PointY="8.66757259145379" />
+          <ConnectorPoint PointX="9.5431211480271774" PointY="8.66757259145379" />
+          <ConnectorPoint PointX="9.75" PointY="8.66757259145379" />
+          <ConnectorPoint PointX="9.75" PointY="17.0099285946524" />
+          <ConnectorPoint PointX="9.375" PointY="6.2302864583333326" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="shopModel.Cart" Width="1.5" PointX="10.5" PointY="3.5" />
+        <AssociationConnector Association="shopModel.FK_Cart_Products" />
+        <AssociationConnector Association="shopModel.FK_Cart_Users" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
