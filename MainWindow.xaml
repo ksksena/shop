@@ -5,12 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:shop"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="550" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Frame x:Name="frameMain" Content="Frame" Foreground="White" NavigationUIVisibility="Hidden"/>
+        <Frame x:Name="frameMain" Content="Frame" Foreground="White" NavigationUIVisibility="Hidden" Margin="0,-3,-1,2" RenderTransformOrigin="0.5,0.5">
+            <Frame.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0.343"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="2.606"/>
+                </TransformGroup>
+            </Frame.RenderTransform>
+        </Frame>
 
     </Grid>
 </Window>

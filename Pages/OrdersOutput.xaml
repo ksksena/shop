@@ -44,7 +44,7 @@
             </ListView>
         </StackPanel>
 
-        <!-- Детали заказа -->
+        
         <StackPanel Grid.Column="1" Margin="10">
             <TextBlock Text="Детали заказа" FontSize="16" FontWeight="Bold" Foreground="#FF780404"/>
             <ListView x:Name="listOrderDetails" Height="400" BorderBrush="#FF780404" Foreground="#FF780404">
@@ -63,14 +63,12 @@
                                 <Run Text="Цена за единицу: "/>
                                 <Run Text="{Binding unitPrice}"/>
                             </TextBlock>
-                            <TextBlock>
-                                <Run Text="Итого: "/>
-                                <Run Text="{Binding TotalPrice}"/>
-                            </TextBlock>
+                            
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <TextBlock x:Name="TextBlockTotalPrice" Text="Общая цена: 0" Foreground="#FF780404" RenderTransformOrigin="0.538,12.377"/>
         </StackPanel>
         <Button Content="Назад" Width="120" Height="20" Click="BackButton_Click" ToolTip="Вернуться назад" Grid.Column="0" HorizontalAlignment="Left" Foreground="#FF780404" BorderBrush="#FF780404" Background="#FFFAE8E8" Margin="10,451,0,0" VerticalAlignment="Top"/>
     </Grid>

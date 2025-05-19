@@ -12,11 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
 using Shop;
 using shop.ApplicationData;
 using shop.Pages;
@@ -27,7 +22,6 @@ namespace Shop.Pages
     {
         private shopEntities1 context;
 
-        // Класс для отображения деталей заказа с вычисляемым свойством TotalPrice
         public class OrderDetailViewModel
         {
             public OrderDetails OrderDetail { get; set; }
@@ -46,27 +40,27 @@ namespace Shop.Pages
         {
             var orders = context.Orders.OrderByDescending(o => o.orderDate).ToList();
             listOrders.ItemsSource = orders;
-            listOrderDetails.ItemsSource = null; // Очищаем детали при загрузке
+            listOrderDetails.ItemsSource = null; 
         }
 
         private void listOrders_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (listOrders.SelectedItem is Orders selectedOrder)
-            {
-                var orderDetails = context.OrderDetails
-                    .Where(od => od.orderID == selectedOrder.orderID)
-                    .Select(od => new OrderDetailViewModel
-                    {
-                        OrderDetail = od,
-                        Products = od.Products
-                    })
-                    .ToList();
-                listOrderDetails.ItemsSource = orderDetails;
-            }
-            else
-            {
-                listOrderDetails.ItemsSource = null;
-            }
+                if (listOrders.SelectedItem is Orders selectedOrder)
+                {
+                    var orderDetails = context.OrderDetails
+                        .Where(od => od.orderID == selectedOrder.orderID)
+                        .Select(od => new OrderDetailViewModel
+                        {
+                            OrderDetail = od,
+                            Products = od.Products
+                        })
+                        .ToList();
+                    listOrderDetails.ItemsSource = orderDetails;
+                }
+                else
+                {
+                    listOrderDetails.ItemsSource = null;
+                }
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
