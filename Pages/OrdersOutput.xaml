@@ -24,7 +24,7 @@
                     <DataTemplate>
                         <StackPanel Orientation="Vertical" Margin="5">
                             <TextBlock Text="{Binding orderID}" FontWeight="Bold">
-                                <Run Text="Заказ №"/>
+                                <Run Text=" Заказ"/>
                             </TextBlock>
                             <TextBlock>
                                 <Run Text="Клиент: "/>
@@ -44,10 +44,10 @@
             </ListView>
         </StackPanel>
 
-        
-        <StackPanel Grid.Column="1" Margin="10">
+        <!-- Детали заказа -->
+        <StackPanel Grid.Column="1" Margin="10,10,0,0">
             <TextBlock Text="Детали заказа" FontSize="16" FontWeight="Bold" Foreground="#FF780404"/>
-            <ListView x:Name="listOrderDetails" Height="400" BorderBrush="#FF780404" Foreground="#FF780404">
+            <ListView x:Name="listOrderDetails" Height="350" BorderBrush="#FF780404" Foreground="#FF780404">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Vertical" Margin="5">
@@ -57,19 +57,19 @@
                             </TextBlock>
                             <TextBlock>
                                 <Run Text="Количество: "/>
-                                <Run Text="{Binding quantity}"/>
+                                <Run Text="{Binding OrderDetail.quantity}"/>
                             </TextBlock>
                             <TextBlock>
                                 <Run Text="Цена за единицу: "/>
-                                <Run Text="{Binding unitPrice}"/>
+                                <Run Text="{Binding Products.price}"/>
                             </TextBlock>
-                            
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <TextBlock x:Name="TextBlockTotalPrice" Text="Общая цена: 0" Foreground="#FF780404" RenderTransformOrigin="0.538,12.377"/>
+            <TextBlock x:Name="TextBlockTotalPrice" Text="Общая цена: 0" FontSize="14" Foreground="#FF780404" Margin="0,10,0,0"/>
         </StackPanel>
+
         <Button Content="Назад" Width="120" Height="20" Click="BackButton_Click" ToolTip="Вернуться назад" Grid.Column="0" HorizontalAlignment="Left" Foreground="#FF780404" BorderBrush="#FF780404" Background="#FFFAE8E8" Margin="10,451,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Page>

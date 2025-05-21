@@ -21,16 +21,7 @@ namespace Shop.Pages
     public partial class DataOutputUser : Page
     {
         private shopEntities1 context;
-        private static List<CartItem> Cart { get; set; } = new List<CartItem>();
         private int currentUserId;
-
-        public class CartItem
-        {
-            public int ProductId { get; set; }
-            public string ProductName { get; set; }
-            public int Quantity { get; set; }
-            public decimal Price { get; set; }
-        }
 
         public DataOutputUser(int userId)
         {
@@ -108,14 +99,14 @@ namespace Shop.Pages
 
                 if (product != null)
                 {
-                    var cartItem = Cart.FirstOrDefault(c => c.ProductId == productId);
+                    var cartItem = CartManager.Cart.FirstOrDefault(c => c.ProductId == productId);
                     if (cartItem != null)
                     {
                         cartItem.Quantity++;
                     }
                     else
                     {
-                        Cart.Add(new CartItem
+                        CartManager.Cart.Add(new CartManager.CartItem
                         {
                             ProductId = product.prodID,
                             ProductName = product.name,
@@ -124,52 +115,14 @@ namespace Shop.Pages
                         });
                     }
 
-                    MessageBox.Show($"Товар '{product.name}' добавлен в корзину!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                    //MessageBox.Show($"Товар '{product.name}' добавлен в корзину!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
         }
 
-        private void Checkout_Click(object sender, RoutedEventArgs e)
+        private void ViewCart_Click(object sender, RoutedEventArgs e)
         {
-            if (Cart.Count == 0)
-            {
-                MessageBox.Show("Корзина пуста. Добавьте товары перед оформлением заказа.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-
-            try
-            {
-                var newOrder = new Orders
-                {
-                    userID = currentUserId,
-                    orderDate = DateTime.Now,
-                    totalAmount = Cart.Sum(item => item.Quantity * item.Price)
-                };
-
-                context.Orders.Add(newOrder);
-                context.SaveChanges();
-
-                foreach (var item in Cart)
-                {
-                    var orderDetail = new OrderDetails
-                    {
-                        orderID = newOrder.orderID,
-                        prodID = item.ProductId,
-                        quantity = item.Quantity,
-                        unitPrice = item.Price
-                    };
-                    context.OrderDetails.Add(orderDetail);
-                }
-
-                context.SaveChanges();
-
-                MessageBox.Show("Заказ успешно оформлен!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
-                Cart.Clear();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ошибка при оформлении заказа: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            NavigationService.Navigate(new Cart(currentUserId));
         }
     }
 }

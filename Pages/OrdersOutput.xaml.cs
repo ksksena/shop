@@ -16,6 +16,7 @@ using Shop;
 using shop.ApplicationData;
 using shop.Pages;
 
+
 namespace Shop.Pages
 {
     public partial class OrdersOutput : Page
@@ -26,7 +27,6 @@ namespace Shop.Pages
         {
             public OrderDetails OrderDetail { get; set; }
             public Products Products { get; set; }
-            public decimal TotalPrice => OrderDetail.quantity * OrderDetail.unitPrice;
         }
 
         public OrdersOutput()
@@ -40,33 +40,36 @@ namespace Shop.Pages
         {
             var orders = context.Orders.OrderByDescending(o => o.orderDate).ToList();
             listOrders.ItemsSource = orders;
-            listOrderDetails.ItemsSource = null; 
+            listOrderDetails.ItemsSource = null;
+            TextBlockTotalPrice.Text = "Общая цена: 0";
         }
 
         private void listOrders_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-                if (listOrders.SelectedItem is Orders selectedOrder)
-                {
-                    var orderDetails = context.OrderDetails
-                        .Where(od => od.orderID == selectedOrder.orderID)
-                        .Select(od => new OrderDetailViewModel
-                        {
-                            OrderDetail = od,
-                            Products = od.Products
-                        })
-                        .ToList();
-                    listOrderDetails.ItemsSource = orderDetails;
-                }
-                else
-                {
-                    listOrderDetails.ItemsSource = null;
-                }
+            if (listOrders.SelectedItem is Orders selectedOrder)
+            {
+                var orderDetails = context.OrderDetails
+                    .Where(od => od.orderID == selectedOrder.orderID)
+                    .Select(od => new OrderDetailViewModel
+                    {
+                        OrderDetail = od,
+                        Products = od.Products
+                    })
+                    .ToList();
+                listOrderDetails.ItemsSource = orderDetails;
+
+                TextBlockTotalPrice.Text = $"Общая цена: {selectedOrder.totalAmount:F2}";
+            }
+            else
+            {
+                listOrderDetails.ItemsSource = null;
+                TextBlockTotalPrice.Text = "Общая цена: 0";
+            }
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new DataOutputAdmin());
-
         }
     }
 }
