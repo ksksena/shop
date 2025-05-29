@@ -27,6 +27,9 @@ namespace Shop.Pages
         {
             InitializeComponent();
             context = new shopEntities1();
+            ComboSort.SelectedIndex = 0;
+            ComboFilter.SelectedIndex = 0;
+
             currentUserId = userId;
             LoadData();
             LoadFilters();

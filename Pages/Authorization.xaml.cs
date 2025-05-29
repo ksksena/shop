@@ -25,6 +25,7 @@ namespace shop.Pages
         public Authorization()
         {
             InitializeComponent();
+            TBLogin.Focus();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

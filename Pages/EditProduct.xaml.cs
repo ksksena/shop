@@ -47,9 +47,10 @@ namespace Shop.Pages
             txtName.Text = product.name ?? string.Empty;
             txtDescription.Text = product.description ?? string.Empty;
             txtPrice.Text = product.price.HasValue ? product.price.Value.ToString("F2") : string.Empty;
-            txtPhoto.Text = product.imageE ?? string.Empty;
             cmbSuppliers.SelectedValue = product.suppID;
         }
+
+        
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
@@ -70,7 +71,6 @@ namespace Shop.Pages
                 product.name = txtName.Text.Trim();
                 product.description = txtDescription.Text.Trim();
                 product.price = price;
-                product.imageE = txtPhoto.Text.Trim();
                 product.suppID = (int?)cmbSuppliers.SelectedValue;
 
                 if (product.prodID == 0) // Новый товар
@@ -80,17 +80,29 @@ namespace Shop.Pages
                 context.SaveChanges();
                 ProductUpdated?.Invoke();
                 MessageBox.Show("Товар успешно сохранен!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
-                NavigationService.GoBack();
+                //NavigationService.GoBack();
+                AppFrame.frmMain2.Navigate(new DataOutputAdmin());
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Ошибка при сохранении: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+
+            AppFrame.frmMain2.Navigate(new DataOutputAdmin());
+
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private void TextBox2_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!char.IsDigit(e.Text, 0))
+            {
+                e.Handled = true;
+            }
         }
 
         private void LoadImageButton(object sender, RoutedEventArgs e)

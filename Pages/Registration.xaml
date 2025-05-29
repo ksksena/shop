@@ -15,20 +15,20 @@
             <ColumnDefinition Width="559*"/>
         </Grid.ColumnDefinitions>
         <TextBlock HorizontalAlignment="Left" Margin="34,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF780404" FontWeight="Bold" Grid.Column="2"><Run Text="Введите "/><Run Language="ru-ru" Text="ФИО"/><Run Text=":"/></TextBlock>
-        <TextBox x:Name="TBName" HorizontalAlignment="Left" Margin="34,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" Grid.Column="2" SelectionBrush="#FF780404"/>
+        <TextBox x:Name="TBName" HorizontalAlignment="Left" Margin="34,69,0,0" PreviewTextInput="TextBox_PreviewTextInput" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" MaxLength="150" MaxHeight="20" MaxWidth="204" Grid.Column="2" SelectionBrush="#FF780404"/>
         <TextBlock HorizontalAlignment="Left" Margin="34,93,0,0" TextWrapping="Wrap" Text="Введите логин:" VerticalAlignment="Top" Foreground="#FF780404" FontWeight="Bold" Grid.Column="2"/>
-        <TextBox x:Name="TBLogin" HorizontalAlignment="Left" Margin="34,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" Grid.Column="2" SelectionBrush="#FF780404"/>
+        <TextBox x:Name="TBLogin" HorizontalAlignment="Left" Margin="34,113,0,0" MaxLength="80" MaxHeight="20" MaxWidth="204"  TextWrapping="Wrap" VerticalAlignment="Top" Width="204" Grid.Column="2" SelectionBrush="#FF780404"/>
         <TextBlock HorizontalAlignment="Left" Margin="34,224,0,0" TextWrapping="Wrap" Text="Введите почту:" VerticalAlignment="Top" Foreground="#FF780404" FontWeight="Bold" Grid.Column="2"/>
         <TextBlock HorizontalAlignment="Left" Margin="34,268,0,0" TextWrapping="Wrap" Text="Введите телефон:" VerticalAlignment="Top" Foreground="#FF780404" FontWeight="Bold" Grid.Column="2"/>
         <TextBlock HorizontalAlignment="Left" Margin="34,137,0,0" TextWrapping="Wrap" Text="Введите пароль:" VerticalAlignment="Top" Foreground="#FF780404" FontWeight="Bold" Grid.Column="2"/>
-        <PasswordBox x:Name="PBpassword" HorizontalAlignment="Left" Margin="34,201,0,0" VerticalAlignment="Top" Width="204" Password="" PasswordChanged="PasswordBox_PasswordChanged" Grid.Column="2" SelectionBrush="#FF780404"/>
+        <PasswordBox x:Name="PBpassword" HorizontalAlignment="Left" Margin="34,201,0,0" VerticalAlignment="Top" MaxLength="80" MaxHeight="20" MaxWidth="204"  Width="204" Password="" PasswordChanged="PasswordBox_PasswordChanged" Grid.Column="2" SelectionBrush="#FF780404"/>
         <TextBlock HorizontalAlignment="Left" Margin="34,181,0,0" TextWrapping="Wrap" Text="Введите пароль повторно:" VerticalAlignment="Top" Foreground="#FF780404" FontWeight="Bold" Grid.Column="2"/>
         <Button x:Name="ButtonRegist" Content="Зарегистрироваться" HorizontalAlignment="Left" Margin="34,312,0,0" VerticalAlignment="Top" Width="204" Click="ButtonRegist_Click" BorderBrush="#FF780404" Foreground="#FF780404" Grid.Column="2" Background="#FFFAE8E8"/>
-        <TextBox x:Name="TBEmail" HorizontalAlignment="Left" Margin="34,246,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" Height="18" Grid.Column="2" SelectionBrush="#FF780404"/>
-        <TextBox x:Name="TBTelephone" HorizontalAlignment="Left" Margin="34,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" Height="18" Grid.Column="2" SelectionBrush="#FF780404"/>
+        <TextBox x:Name="TBEmail" HorizontalAlignment="Left" MaxLength="80" MaxHeight="20" MaxWidth="204"  Margin="34,246,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" Height="18" Grid.Column="2" SelectionBrush="#FF780404"/>
+        <TextBox x:Name="TBTelephone" HorizontalAlignment="Left" PreviewTextInput="TBTelephone_PreviewTextInput" TextChanged="TBTelephone_TextChanged" MaxHeight="20" MaxWidth="204"  Margin="34,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" Height="18" Grid.Column="2" SelectionBrush="#FF780404"/>
         <Button x:Name="ButtonExit" Content="Назад" HorizontalAlignment="Left" Margin="34,338,0,0" VerticalAlignment="Top" Width="204" Click="ButtonExit_Click" BorderBrush="#FF780404" Foreground="#FF780404" Grid.Column="2" Background="#FFFAE8E8"/>
         <TextBlock Margin="76,20,0,0" Text="Регистрация" VerticalAlignment="Top" Width="120" Foreground="#FF780404" FontSize="18" HorizontalAlignment="Left" TextWrapping="Wrap" TextAlignment="Center" Height="24" FontWeight="Bold" Grid.Column="2"/>
-        <TextBox x:Name="TBPassword" HorizontalAlignment="Left" Margin="34,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" Grid.Column="2" SelectionBrush="#FF780404"/>
+        <TextBox x:Name="TBPassword" HorizontalAlignment="Left" Margin="34,159,0,0" MaxLength="80" MaxHeight="20" MaxWidth="204"  TextWrapping="Wrap" VerticalAlignment="Top" Width="204" Grid.Column="2" SelectionBrush="#FF780404"/>
 
     </Grid>
 </Page>

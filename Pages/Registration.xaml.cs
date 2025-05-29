@@ -121,7 +121,49 @@ namespace shop.Pages
                 }
             }
 
-            private void ButtonExit_Click(object sender, RoutedEventArgs e)
+        private void TBTelephone_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string digitsOnly = new string(TBTelephone.Text.Where(char.IsDigit).ToArray());
+            if (digitsOnly.Length > 0 && digitsOnly[0] != '7' && digitsOnly[0] != '8')
+            {
+                digitsOnly = "7" + digitsOnly;
+            }
+            string formattedPhone = "+7 (";
+            if (digitsOnly.Length > 1)
+                formattedPhone += digitsOnly.Substring(1, Math.Min(3, digitsOnly.Length - 1));
+            if (digitsOnly.Length > 4)
+                formattedPhone += ") " + digitsOnly.Substring(4, Math.Min(3, digitsOnly.Length - 4));
+            if (digitsOnly.Length > 7)
+                formattedPhone += "-" + digitsOnly.Substring(7, Math.Min(2, digitsOnly.Length - 7));
+            if (digitsOnly.Length > 9)
+                formattedPhone += "-" + digitsOnly.Substring(9, Math.Min(2, digitsOnly.Length - 9));
+            TBTelephone.TextChanged -= TBTelephone_TextChanged;
+            TBTelephone.Text = formattedPhone;
+            TBTelephone.CaretIndex = formattedPhone.Length;
+            TBTelephone.TextChanged += TBTelephone_TextChanged;
+        }
+
+        private void TBTelephone_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!char.IsDigit(e.Text, 0))
+            {
+                e.Handled = true;
+                return;
+            }
+            string currentText = TBTelephone.Text.Replace("+7 (", "").Replace(")", "").Replace("-", "").Replace(" ", "");
+            if (currentText.Length >= 11)
+            {
+                e.Handled = true;
+            }
+        }
+        private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (char.IsDigit(e.Text, 0))
+            {
+                e.Handled = true;
+            }
+        }
+        private void ButtonExit_Click(object sender, RoutedEventArgs e)
             {
                 this.NavigationService.Navigate(new Authorization());
             }
